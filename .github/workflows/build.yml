@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        arch: [
+          'amd64',
+          'arm64',
+          'ia64',
+          'loong64',
+          'mips64el',
+          'ppc64le',
+          'riscv64',
+          'sparc64'
+        ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cleanup
+        uses: rokibhasansagar/slimhub_actions@main
+        with:
+          retain: "docker_imgcache"
+      - name: Docker build
+        run: docker build --build-arg "sherona_arch=${{ matrix.arch }}" .
