@@ -47,4 +47,4 @@ RUN sudo apt-get -qqy update \
   && sudo rm -rf /var/lib/apt/{archives,lists}/*
 
 ARG sherona_arc
-RUN ./build.sh "${_sherona_arch}"
+RUN SHERONA_CLEANUP=1 ./build.sh "${_sherona_arch}"
