@@ -23,20 +23,28 @@ RUN sudo apt-get -qqy update \
   && sudo apt-get -qqy update \
   && sudo apt-get -qqy upgrade \
   && sudo apt-get -qqy install \
+    autoconf \
+    automake \
+    autopoint \
     binutils \
     build-essential \
     g++ \
     gcc \
+    gettext \
     git \
+    intltool \
     libgmp-dev \
     libisl-dev \
     libmpc-dev \
     libmpfr-dev \
+    libtool \
+    m4 \
     make \
+    mercurial \
   && sudo apt-get remove --purge -qqy software-properties-common \
   && sudo apt-get autoremove --purge -qqy \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/{archives,lists}/*
 
-ARG sherona_arch
+ARG sherona_arc
 RUN ./build.sh "${_sherona_arch}"
