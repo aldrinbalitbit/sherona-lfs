@@ -25,6 +25,6 @@ jobs:
       - name: Cleanup
         uses: rokibhasansagar/slimhub_actions@main
         with:
-          retain: "docker_imgcache"
+          retain: "docker_buildkit"
       - name: Docker build
-        run: docker build --build-arg "sherona_arch=${{ matrix.arch }}" .
+        run: docker build --build-arg "SHERONA_ARCH=${{ matrix.arch }}" .
