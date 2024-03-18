@@ -1,10 +1,11 @@
 FROM debian:stable
 
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -qqy update \
   && apt-get -qqy upgrade \
-  && apt-get -qqy install sudo \
+  && apt-get -qqy install locales sudo \
   && useradd -m -s /bin/bash sherona \
   && localedef -i en_US -f UTF-8 en_US.UTF-8 \
   && echo 'sherona ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
@@ -33,6 +34,7 @@ RUN sudo apt-get -qqy update \
     gettext \
     git \
     intltool \
+    libc-dev \
     libgmp-dev \
     libisl-dev \
     libmpc-dev \
@@ -47,4 +49,4 @@ RUN sudo apt-get -qqy update \
   && sudo rm -rf /var/lib/apt/{archives,lists}/*
 
 ARG SHERONA_ARCH
-RUN SHERONA_CLEANUP=1 ./build.sh "${_sherona_arch}"
+RUN SHERONA_CLEANUP=1 ./build.sh "${SHERONA_ARCH}"
