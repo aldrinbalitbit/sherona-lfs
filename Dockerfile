@@ -17,13 +17,6 @@ USER sherona
 RUN sudo apt-get -qqy update \
   && sudo apt-get -qqy upgrade \
   && sudo apt-get -qqy install \
-    gnupg-agent \
-    skopeo \
-    software-properties-common \
-  && sudo add-apt-repository -y ppa:git-core/ppa \
-  && sudo apt-get -qqy update \
-  && sudo apt-get -qqy upgrade \
-  && sudo apt-get -qqy install \
     autoconf \
     automake \
     autopoint \
@@ -49,4 +42,4 @@ RUN sudo apt-get -qqy update \
   && sudo rm -rf /var/lib/apt/{archives,lists}/*
 
 ARG SHERONA_ARCH
-RUN SHERONA_CLEANUP=1 ./build.sh "${SHERONA_ARCH}"
+RUN SHERONA_CLEANUP=1 sudo ./build.sh "${SHERONA_ARCH}"
