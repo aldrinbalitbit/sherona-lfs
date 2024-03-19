@@ -36,12 +36,11 @@ RUN sudo apt-get -qqy update \
     m4 \
     make \
     mercurial \
-  && sudo apt-get remove --purge -qqy software-properties-common \
   && sudo apt-get autoremove --purge -qqy \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/{archives,lists}/*
 
-COPY --chown=sherona:sherona . /app
-WORKDIR /app
+COPY --chown=sherona:sherona . /sherona
+WORKDIR /sherona
 ARG SHERONA_ARCH
 RUN SHERONA_CLEANUP=1 sudo ./build.sh "${SHERONA_ARCH}"
