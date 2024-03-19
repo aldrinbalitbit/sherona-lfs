@@ -26,7 +26,7 @@ _gmp_configure_args=(
 )
 
 echo -e "\e[1;32m>>\e[m Downloading gmp"
-mkdir "${_sources_dir}"/toolchain/gmp
+mkdir -p "${_sources_dir}"/toolchain/gmp
 curl -sLo- https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.gz | tar -zxf- -C "${_sources_dir}"/toolchain/gmp
 mkdir -p "${_dist_dir}"/toolchain/gmp
 echo -e "\e[1;32m>>\e[m Configuring gmp"
