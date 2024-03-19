@@ -25,7 +25,7 @@ _sherona_configure_args=(
 )
 
 echo -e "\e[1;32m>>\e[m Cloning gmp"
-hg clone https://gmplib.org/repo/gmp/ "${_sources_dir}"/toolchain/gmp > /dev/null 2>&1
+hg clone https://gmplib.org/repo/gmp/ "${_sources_dir}"/toolchain/gmp
 cd "${_sources_dir}"/toolchain/gmp
 echo -e "\e[1;32m>>\e[m Bootstrapping gmp"
 ./.bootstrap > /dev/null 2>&1
