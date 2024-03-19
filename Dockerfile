@@ -21,6 +21,7 @@ RUN sudo apt-get -qqy update \
     autopoint \
     binutils \
     build-essential \
+    curl \
     g++ \
     gcc \
     gettext \

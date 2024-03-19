@@ -25,10 +25,10 @@ _gmp_configure_args=(
     --disable-werror
 )
 
-echo -e "\e[1;32m>>\e[m Cloning gmp"
-git clone --depth=1 https://salsa.debian.org/science-team/gmp.git "${_sources_dir}"/toolchain/gmp > /dev/null 2>&1
+echo -e "\e[1;32m>>\e[m Downloading gmp"
+mkdir "${_sources_dir}"/toolchain/gmp
+curl -sLo- https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.gz | tar -zxf- -C "${_sources_dir}"/toolchain/gmp
 mkdir -p "${_dist_dir}"/toolchain/gmp
-cd "${_dist_dir}"/toolchain/gmp
 echo -e "\e[1;32m>>\e[m Configuring gmp"
 AR=gcc-ar                     \
 AS=as                         \
@@ -46,7 +46,7 @@ RANLIB=gcc-ranlib             \
 					  --libexecdir=/lib            \
 					  --includedir=/include        \
 					  --datarootdir=/share         \
-					  ${_gmp_configure_args}
+					  ${_gmp_configure_args} > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Building gmp"
 make > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Installing gmp to the Sherona LFS' toolchain"
