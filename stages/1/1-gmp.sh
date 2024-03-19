@@ -12,7 +12,7 @@ _sherona_cxxflags="${_sherona_cflags}"
 _sherona_ld="ld -s ${_sherona_static}"
 
 _gmp_configure_args=(
-    --eanble-alloca
+    --enable-alloca=malloc-reentrant
     --enable-assembly
     --enable-cxx
     --enable-fake-cpuid
@@ -45,9 +45,8 @@ RANLIB=gcc-ranlib             \
 					  --libdir=/lib                \
 					  --libexecdir=/lib            \
 					  --includedir=/include        \
-					  --sysconfdir=/etc            \
-					  --localstatedir=/var         \
-					  "${_gmp_configure_args}" # > /dev/null 2>&1
+					  --datarootdir=/share         \
+					  "${_gmp_configure_args}" > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Building gmp"
 make > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Installing gmp to the Sherona LFS' toolchain"
