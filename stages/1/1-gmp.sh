@@ -25,10 +25,7 @@ _sherona_configure_args=(
 )
 
 echo -e "\e[1;32m>>\e[m Cloning gmp"
-hg clone http://gmplib.org/repo/gmp/ "${_sources_dir}"/toolchain/gmp
-cd "${_sources_dir}"/toolchain/gmp
-echo -e "\e[1;32m>>\e[m Bootstrapping gmp"
-./.bootstrap > /dev/null 2>&1
+git clone --depth=1 https://salsa.debian.org/science-team/gmp.git "${_sources_dir}"/toolchain/gmp > /dev/null 2>&1
 mkdir -p "${_dist_dir}"/toolchain/gmp
 cd "${_dist_dir}"/toolchain/gmp
 echo -e "\e[1;32m>>\e[m Configuring gmp"
@@ -41,8 +38,7 @@ CXXFLAGS="${_sherona_cflags}" \
 LD="${_sherona_ld}"           \
 NM=gcc-nm                     \
 RANLIB=gcc-ranlib             \
-"${_sources_dir}"/toolchain/gmp/configure --host=$(uname -m)-linux-gnu \
-                                          --prefix="${_toolchain_dir}" \
+"${_sources_dir}"/toolchain/gmp/configure --prefix="${_toolchain_dir}" \
                                           --bindir=/bin                \
 	                                  --sbindir=/bin               \
 					  --libdir=/lib                \
