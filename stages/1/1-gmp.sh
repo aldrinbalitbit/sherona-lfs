@@ -46,7 +46,7 @@ RANLIB=gcc-ranlib             \
 					  --libexecdir=/lib            \
 					  --includedir=/include        \
 					  --datarootdir=/share         \
-					  ${_gmp_configure_args} > /dev/null 2>&1
+					  ${_gmp_configure_args}
 echo -e "\e[1;32m>>\e[m Building gmp"
 make > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Installing gmp to the Sherona LFS' toolchain"
