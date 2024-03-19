@@ -10,7 +10,8 @@ _sherona_cflags="-Wall -w"
 _sherona_cxx="g++ ${_sherona_static}"
 _sherona_cxxflags="${_sherona_cflags}"
 _sherona_ld="ld -s ${_sherona_static}"
-_sherona_configure_args=(
+
+_gmp_configure_args=(
     --eanble-alloca
     --enable-assembly
     --enable-cxx
@@ -46,7 +47,7 @@ RANLIB=gcc-ranlib             \
 					  --includedir=/include        \
 					  --sysconfdir=/etc            \
 					  --localstatedir=/var         \
-					  "${_sherona_configure_args}" > /dev/null 2>&1
+					  "${_gmp_configure_args}" # > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Building gmp"
 make > /dev/null 2>&1
 echo -e "\e[1;32m>>\e[m Installing gmp to the Sherona LFS' toolchain"
