@@ -1,6 +1,5 @@
 FROM debian:stable
 
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -qqy update \
@@ -41,5 +40,7 @@ RUN sudo apt-get -qqy update \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/{archives,lists}/*
 
+COPY --chown=sherona:sherona . /app
+WORKDIR /app
 ARG SHERONA_ARCH
 RUN SHERONA_CLEANUP=1 sudo ./build.sh "${SHERONA_ARCH}"
